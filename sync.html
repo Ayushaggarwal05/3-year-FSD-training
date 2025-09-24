@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sync vs Async Demo</title>
+  </head>
+  <body>
+    <h1>Synchronous vs. Asynchronous JavaScript</h1>
+    <p>Check the browser's console (F12) to see the output.</p>
+    <hr />
+
+    <h2>Synchronous Code Example</h2>
+    <button onclick="runSyncExample()">Run Synchronous Task</button>
+    <p>This will block the page for a few seconds.</p>
+
+    <hr />
+
+    <h2>Asynchronous Code Example</h2>
+    <button onclick="runAsyncExample()">Run Asynchronous Task</button>
+    <p>
+      This will not block the page. Messages will appear in the console later.
+    </p>
+
+    <script>
+      // --- Synchronous Example ---
+      function longRunningTask() {
+        console.log("Synchronous: Starting a task that takes 3 seconds...");
+        let start = Date.now();
+        while (Date.now() < start + 3000) {
+          // This loop blocks the main thread
+        }
+        console.log("Synchronous: Task completed!");
+      }
+
+      function runSyncExample() {
+        console.clear(); // Clear the console for a clean demo
+        console.log("Synchronous: Program started.");
+        longRunningTask();
+        console.log("Synchronous: Program finished.");
+      }
+
+      // --- Asynchronous Example ---
+      function asyncTask() {
+        console.log(
+          "Asynchronous: Starting a task that will complete in 3 seconds..."
+        );
+        setTimeout(() => {
+          console.log("Asynchronous: Task completed!");
+        }, 3000); // This is non-blocking
+      }
+
+      function runAsyncExample() {
+        console.clear(); // Clear the console for a clean demo
+        console.log("Asynchronous: Program started.");
+        asyncTask();
+        console.log("Asynchronous: Program continues to run without waiting.");
+        console.log("Asynchronous: Program finished.");
+      }
+    </script>
+  </body>
+</html>
