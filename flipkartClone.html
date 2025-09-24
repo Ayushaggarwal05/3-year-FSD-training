@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flipkart</title>
+    <style>
+      body {
+        margin: 0px;
+        font-family: Arial, sans-serif;
+        background: #fff;
+      }
+      header {
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        background: #f8f9fa;
+        border-bottom: 1px solid #ddd;
+      }
+      .logo {
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #2874f0;
+        margin-right: 20px;
+      }
+      .logo span {
+        font-weight: bold;
+        font-size: 0.9rem;
+        color: #ffdd00;
+      }
+      .search-bar {
+        flex-grow: 1;
+      }
+      .search-bar input {
+        width: 100%;
+        padding: 8px 12px;
+        font-size: 1rem;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-left: 20px;
+        font-weight: bold;
+        color: black;
+      }
+      nav button {
+        background: none;
+        border: none;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      nav button:hover {
+        text-decoration: underline;
+      }
+      .nav-icons {
+        display: flex;
+        gap: 15px;
+        margin: 20px;
+      }
+      .categories {
+        display: flex;
+        justify-content: center;
+        padding: 15px 0;
+        gap: 30px;
+        background: #fff;
+        border-bottom: 1px solid #ddd;
+      }
+      .category {
+        text-align: center;
+        font-size: 0.9rem;
+        cursor: pointer;
+        color: #333;
+      }
+      .category img {
+        display: block;
+        margin: 0 auto 5px;
+        height: 40px;
+        border-radius: 20px;
+      }
+      .category:hover {
+        color: #2874f0;
+      }
+      .banner {
+        position: relative;
+        margin: 20px auto;
+        width: 90%;
+        max-width: 1200px;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .banner img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+      .a {
+        height: 50px;
+        weight: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">Flipkart <span>Explore Plus</span></div>
+      <div class="search-bar">
+        <input
+          type="search"
+          placeholder="Search for Products"
+          style="
+            background: url('https://cdn-icons-png.flaticon.com/512/622/622669.png')
+              no-repeat 10px center;
+            background-size: 18px;
+            padding-left: 35px;
+            height: 35px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline: none;
+          " />
+      </div>
+      <nav style="font-weight: bolder">
+        <button>Login</button>
+        <button>Cart</button>
+        <button>Become a Seller</button>
+      </nav>
+    </header>
+
+    <div class="categories">
+      <div class="category">
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/004/970/831/original/minute-logo-wordmark-lettering-design-free-free-vector.jpg"
+          alt="Minutes" />
+        Minutes
+      </div>
+      <div class="category">
+        <img
+          src="https://tse1.mm.bing.net/th/id/OIP.sHbiqyr_UFs9NBXK8AoJrgHaF7?pid=Api&P=0&h=220"
+          alt="Mobiles & Tablets" />
+        Mobiles & Tablets
+      </div>
+      <div class="category">
+        <img
+          src="https://img.freepik.com/free-vector/hand-drawn-clothing-store-logo-design_23-2149577874.jpg?w=2000"
+          alt="Fashion" />
+        Fashion
+      </div>
+      <div class="category">
+        <img
+          src="https://thumbs.dreamstime.com/z/electronics-logo-template-minimalist-modern-simple-work-adjusted-to-suit-your-needs-109098286.jpg"
+          alt="Electronics" />
+        Electronics
+      </div>
+      <div class="category">
+        <img
+          src="https://as1.ftcdn.net/v2/jpg/05/19/67/42/1000_F_519674216_y6iDAZpwziMAVyfzGJxrDmyaCpvnnHmQ.jpg"
+          alt="Home & Furniture" />
+        Home & Furniture
+      </div>
+      <div class="category">
+        <img
+          src="https://tse3.mm.bing.net/th/id/OIP.PmrI1Tul-FjzSuIIVGEmkAHaF_?pid=Api&P=0&h=220"
+          alt="TVs & Appliances" />
+        TVs & Appliances
+      </div>
+      <div class="category">
+        <img
+          src="https://tse1.mm.bing.net/th/id/OIP.WjKTOTQDrVrjwhwqdnntbgHaFO?pid=Api&P=0&h=220"
+          alt="Flight Bookings" />
+        Flight Bookings
+      </div>
+      <div class="category">
+        <img
+          src="https://tse1.mm.bing.net/th/id/OIP.vclxTGCmhass3AL0xiHWpgHaHa?pid=Api&P=0&h=220"
+          alt="Beauty, Food.." />
+        Beauty
+      </div>
+      <div class="category">
+        <img
+          src="https://tse4.mm.bing.net/th/id/OIP.WDQpk28UAQl1FQAC8PgbGwHaHa?pid=Api&P=0&h=220"
+          alt="Grocery" />
+        Grocery
+      </div>
+    </div>
+
+    <div class="banner">
+      <img
+        src="https://tse2.mm.bing.net/th/id/OIP.NxFQw4aK-JdwUbtTlDMAkQHaEN?pid=Api&P=0&h=220"
+        alt="Big Billion Days Early Bird Deals" />
+    </div>
+
+    <div class="banner">
+      <img
+        src="https://images.indianexpress.com/2024/09/Untitled-design_20240912_175103_0000.png"
+        alt="Big Billion Days Start 23rd Sep" />
+    </div>
+  </body>
+</html>

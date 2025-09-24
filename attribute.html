@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Demonstration of all HTML attributes" />
+    <meta name="author" content="Your Name" />
+    <title>HTML Attributes Example</title>
+  </head>
+  <body>
+    <h1>Main Heading (H1)</h1>
+    <h2 hidden>Subheading (H2)</h2>
+
+    <p style="color: blue" title="This is a paragraph.">
+      This paragraph contains various attributes.
+    </p>
+
+    <a
+      href="https://www.example.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      title="Visit Example Website"
+      download="example-file.html"
+      >Example Website (Download link)</a
+    >
+
+    <hr />
+
+    <h2>Table Example</h2>
+    <table cellpadding="5" cellspacing="5" border="1">
+      <tr bgcolor="#CBC3E3">
+        <th>Header 1</th>
+        <th>Header 2</th>
+        <th colspan="2">Header 3</th>
+      </tr>
+      <tr>
+        <td>Row 1, Cell 1</td>
+        <td rowspan="2">Row 1, Cell 2</td>
+        <td>Row 1, Cell 3</td>
+        <td>Row 1, Cell 4</td>
+      </tr>
+      <tr>
+        <td>Row 2, Cell 1</td>
+        <td>Row 2, Cell 3</td>
+        <td>Row 2, Cell 4</td>
+      </tr>
+    </table>
+
+    <hr />
+
+    <h2>Form Example</h2>
+    <form action="submit_form.php" method="POST" autocomplete="on" novalidate>
+      <label for="name">Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="username"
+        value="DAVE GRAY"
+        placeholder="Enter your name"
+        maxlength="50"
+        required /><br /><br />
+
+      <label for="email">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="useremail"
+        placeholder="Enter your email"
+        readonly /><br /><br />
+
+      <label for="age">Age:</label>
+      <input
+        type="number"
+        id="age"
+        name="userage"
+        value="18"
+        min="18"
+        max="100"
+        step="1" /><br /><br />
+
+      <label for="password">Password:</label>
+      <input
+        type="password"
+        id="password"
+        name="userpassword"
+        pattern="[a-zA-Z0-9]{8,}"
+        required /><br /><br />
+
+      <!-- Select with multiple and size attributes -->
+      <label for="hob">Choose a hobbie:</label>
+      <select id="hob" name="hob[]" multiple size="3">
+        <option value="bad" selected>Badminton</option>
+        <option value="fball">Football</option>
+        <option value="Tennis">Tennis</option>
+        <option value="other">other</option></select
+      ><br /><br />
+
+      <!-- Radio buttons with checked attribute -->
+      <label>Gender:</label><br />
+      <input type="radio" id="male" name="gender" value="male" checked />
+      <label for="male">Male</label><br />
+      <input type="radio" id="female" name="gender" value="female" />
+      <label for="female">Female</label><br /><br />
+
+      <!-- Checkbox with checked -->
+      <label>Interests:</label><br />
+      <input
+        type="checkbox"
+        id="interest1"
+        name="interest"
+        value="coding"
+        checked />
+      <label for="interest1">Coding</label><br />
+      <input type="checkbox" id="interest2" name="interest" value="music" />
+      <label for="interest2">Music</label><br /><br />
+
+      <!-- Submit and reset buttons -->
+      <input type="submit" value="Submit" />
+      <input type="reset" value="Reset Form" />
+    </form>
+
+    <hr />
+
+    <!-- Code block with preformatted text -->
+    <h2>Code Block Example</h2>
+    <pre><code>
+    function sayHello() {
+        alert("Hello, World!");
+    }
+    </code></pre>
+
+    <hr />
+
+    <!-- Audio with controls, autoplay, loop -->
+    <h2>Audio Example</h2>
+    <audio controls autoplay loop>
+      <source src="audiofile.mp3" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+
+    <hr />
+
+    <!-- Video with width, height, controls, autoplay, loop, muted -->
+    <h2>Video Example</h2>
+    <video width="320" height="240" controls autoplay loop muted>
+      <source src="<iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/watch?v=cty7oHF6vf4&ab_channel=EarCandy"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe
+      >" type="video/mp4"> Your browser does not support the video element.
+    </video>
+
+    <hr />
+  </body>
+</html>
