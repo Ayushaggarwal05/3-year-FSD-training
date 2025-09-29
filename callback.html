@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Callback Example</title>
+  </head>
+  <body>
+    <button id="myButton">Click Me!</button>
+    <p id="message"></p>
+
+    <script>
+      const button = document.getElementById("myButton");
+      const messageDisplay = document.getElementById("message");
+
+      button.addEventListener("click", function () {
+        messageDisplay.textContent = "Button clicked! (Callback executed)";
+        console.log("Callback function ran!");
+      });
+
+      console.log("Script loaded. Waiting for click...");
+    </script>
+  </body>
+</html>

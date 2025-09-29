@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Callback Hell</title>
+    <style>
+      body {
+        font-family: "Courier New", monospace;
+        background-color: #1e1e1e;
+        color: #d4d4d4;
+      }
+      .container {
+        margin: 20px;
+        padding: 20px;
+        background-color: #252526;
+        border-radius: 5px;
+      }
+      h1 {
+        color: #569cd6;
+      }
+      button {
+        padding: 10px 15px;
+        background-color: #4ec9b0;
+        color: #1e1e1e;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      .log-area {
+        margin-top: 15px;
+        border: 1px solid #3e3e3e;
+        padding: 10px;
+        min-height: 100px;
+        background-color: #1c1c1c;
+      }
+      .error {
+        color: #f44747;
+      }
+      .success {
+        color: #9cd656;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Callback Hell (Pyramid of Doom)</h1>
+      <p>Click the button to start the dependent asynchronous sequence.</p>
+      <button id="startBtn">Run Callback Hell</button>
+      <div id="logArea" class="log-area"></div>
+    </div>
+
+    <script>
+      const startBtn = document.getElementById("startBtn");
+      const logArea = document.getElementById("logArea");
+
+      function log(message, className = "") {
+        const p = document.createElement("p");
+        p.innerHTML = message;
+        p.className = className;
+        logArea.appendChild(p);
+      }
+
+      function getUser(userId, callback) {
+        log(`Starting: Fetching User ID ${userId}...`);
+        setTimeout(() => {
+          if (Math.random() < 0.1) {
+            callback("Error: Network timeout during user fetch.", null);
+          } else {
+            const user = { name: "Alice", id: userId };
+            callback(null, user);
+          }
+        }, 1000);
+      }
+
+      function getPosts(user, callback) {
+        log(`\tStarting: Fetching posts for user ${user.name}...`);
+        setTimeout(() => {
+          const posts = [
+            { id: 101, title: "First Post" },
+            { id: 102, title: "Second Post" },
+          ];
+          callback(null, posts);
+        }, 1500);
+      }
+
+      function getComments(post, callback) {
+        log(`\t\tStarting: Fetching comments for post ID ${post.id}...`);
+        setTimeout(() => {
+          const comments = ["Great Post!", "Love this content."];
+          callback(null, comments);
+        }, 800);
+      }
+
+      startBtn.addEventListener("click", () => {
+        logArea.innerHTML = "";
+        startBtn.disabled = true;
+
+        getUser(42, (err, user) => {
+          if (err) {
+            log(`LEVEL 1 FAILED: ${err}`, "error");
+            startBtn.disabled = false;
+            return;
+          }
+          log(
+            `<span class="success">LEVEL 1 COMPLETE: User ${user.name} found.</span>`
+          );
+
+          getPosts(user, (err, posts) => {
+            if (err) {
+              log(`\tLEVEL 2 FAILED: ${err}`, "error");
+              startBtn.disabled = false;
+              return;
+            }
+            const latestPost = posts[0];
+            log(
+              `<span class="success">\tLEVEL 2 COMPLETE: Found ${posts.length} posts. Last post: "${latestPost.title}"</span>`
+            );
+
+            getComments(latestPost, (err, comments) => {
+              if (err) {
+                log(`\t\tLEVEL 3 FAILED: ${err}`, "error");
+                startBtn.disabled = false;
+                return;
+              }
+              log(
+                `<span class="success">\t\tLEVEL 3 COMPLETE: Found ${comments.length} comments.</span>`
+              );
+
+              log("----------------------------------------------------");
+              log(
+                `\t\t\tFINAL RESULT: User ${user.name} has ${comments.length} comments on their post "${latestPost.title}"`
+              );
+              log("----------------------------------------------------");
+
+              startBtn.disabled = false;
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
