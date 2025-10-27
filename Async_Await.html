@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Async/Await Example</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 20px;
+      }
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #2c3e50;
+      }
+      button {
+        padding: 10px 15px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      .log-area {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        padding: 15px;
+        background-color: #ecf0f1;
+        min-height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Async/Await Demonstration</h1>
+      <p>
+        This sequence simulates dependent data loading without using nested
+        callbacks.
+      </p>
+      <button id="startButton">Start Asynchronous Sequence</button>
+      <div id="logArea" class="log-area">
+        Click the button to start the process.
+      </div>
+    </div>
+
+    <script>
+      const startButton = document.getElementById("startButton");
+      const logArea = document.getElementById("logArea");
+
+      // Helper function to update the display
+      function log(message) {
+        logArea.innerHTML += `<p>• ${message}</p>`;
+        console.log(message);
+      }
+
+      function fetchUser(id) {
+        log(`Starting: Fetching User ID ${id}...`);
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve({ name: "Alex", posts: 3 });
+          }, 1000); // Wait 1 second
+        });
+      }
+
+      function fetchPostDetails(user) {
+        log(`Starting: Fetching details for user ${user.name}...`);
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            resolve({ comments: 12, rating: 4.5 });
+          }, 1500); // Wait 1.5 seconds
+        });
+      }
+
+      async function runSequence() {
+        logArea.innerHTML = ""; // Clear previous logs
+        startButton.disabled = true;
+        log("Sequence initiated.");
+
+        try {
+          const userData = await fetchUser(101);
+          log(`Step 1 Complete: User found: ${userData.name}`);
+
+          const postData = await fetchPostDetails(userData);
+          log(`Step 2 Complete: Details found: ${postData.comments} comments`);
+
+          log(
+            `✅ Final Result: ${userData.name} has ${userData.posts} posts and ${postData.comments} total comments.`
+          );
+        } catch (error) {
+          log(`❌ ERROR: ${error.message}`);
+        } finally {
+          startButton.disabled = false;
+          log("Sequence finished.");
+        }
+      }
+
+      startButton.addEventListener("click", runSequence);
+    </script>
+  </body>
+</html>
