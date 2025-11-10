@@ -1,37 +1,37 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Link1 from "./components/Link1";
+import Login from "./components/Login";
+import Register from "./components/Register";
+
+function Home() {
+  return <h2>Home Page</h2>;
+}
+
+function About() {
+  return <h2>About Page</h2>;
+}
+
+function Contact() {
+  return <h2>Contact Page</h2>;
+}
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <h1> React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+    <BrowserRouter>
+      <div className="App">
+        <Link1 />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </main>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <button
-        className="btn btn-primary"
-        onClick={() => setCount((count) => count + 1)}>
-        NOW CLICK MEE^^
-      </button>
-      <button
-        className="btn btn-primary "
-        onClick={() => setCount((count) => count - 1)}>
-        Dec Count
-      </button>
-      <div className="card">
-        <button>RED</button>
-        <button>GREEN</button>
-      </div>
-    </>
+    </BrowserRouter>
   );
 }
 
