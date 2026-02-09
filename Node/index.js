@@ -1,4 +1,5 @@
 const http = require("http");
+const fs = require("fs");
 const myserver = http.createServer((req, res) => {
   if (req.url == "/") {
     res.end("welcome to home page");
@@ -12,7 +13,7 @@ const myserver = http.createServer((req, res) => {
         <body>
 
         <h2>My Image</h2>
-        <img src="https://www.abes.ac.in/assets/HomePage/2%20About%20ABES.jpg" alt="My photo" width="300">
+        <img src="https://www.abes.ac.in/assets/HomePage/2%20About%20ABES.jpg" alt="My photo" width="600" height="600">
 
         </body>
         </html>
@@ -27,3 +28,5 @@ const myserver = http.createServer((req, res) => {
 myserver.listen(8000, (req, res) => {
   console.log("server is running on port 8000");
 });
+
+fs.writeFileSync("./it-a.txt", "we are student of IT department");
