@@ -30,3 +30,21 @@ myserver.listen(8000, (req, res) => {
 });
 
 fs.writeFileSync("./it-a.txt", "we are student of IT department");
+
+fs.readFile("./it-a.txt", "utf-8", (err, result) => {
+  if (err) {
+    console.log("error", err);
+  } else {
+    console.log("result", result);
+  }
+});
+
+fs.appendFileSync(
+  "./it-a.txt",
+  "and i am happy to be in this department which is going places",
+);
+
+fs.writeFileSync("./a1.txt", "this is the content of a1 file.");
+fs.cpSync("./a1.txt", "./b1.txt");
+
+fs.unlinkSync("./a1.txt");
